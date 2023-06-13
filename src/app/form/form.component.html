@@ -1,0 +1,45 @@
+<div class="container">
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div formGroupName="credentials">
+      <div class="lab-inp">
+        <label for="email"> Email : </label>
+        <input type="email" formControlName="email" />
+        <div
+          *ngIf="
+            userForm.get('credentials.email')?.errors &&
+            !userForm.get('credentials.email')?.pristine
+          "
+          class="error-msg"
+        >
+          <div
+            [hidden]="!userForm.get('credentials.email')?.errors?.['required']"
+          >
+            Email is required.
+          </div>
+          <div [hidden]="!userForm.get('credentials.email')?.invalid">
+            Invalid Email
+          </div>
+        </div>
+      </div>
+
+      <div class="lab-inp">
+        <label for="password"> Password : </label>
+        <input type="password" formControlName="password" />
+        <div
+          *ngIf="
+            userForm.get('credentials.password')?.errors &&
+            !userForm.get('credentials.password')?.pristine
+          "
+          class="error-msg"
+        >
+          <div
+            [hidden]="!userForm.get('credentials.password')?.errors?.['required']"
+          >
+            Password is required.
+          </div>
+        </div>
+      </div>
+    </div>
+    <button type="submit" [disabled]="userForm.invalid">Click</button>
+  </form>
+</div>

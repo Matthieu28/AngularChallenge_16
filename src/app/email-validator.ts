@@ -6,7 +6,7 @@ export function emailValidator(control: AbstractControl): ValidationErrors | nul
     const valid = emailegex.test(control.value);
 
     const errors = {
-        password: {
+        email: {
             rules: 'must contain "wilder.school" at the end'
         }
     };

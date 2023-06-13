@@ -17,7 +17,8 @@
             Email is required.
           </div>
           <div [hidden]="!userForm.get('credentials.email')?.invalid">
-            Invalid Email
+            Invalid Email :
+            {{ userForm.get("credentials.email")?.errors?.['email'].rules }}
           </div>
         </div>
       </div>
